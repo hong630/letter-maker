@@ -1,6 +1,8 @@
 /*fonts*/
 @import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Gothic+A1&family=Hahmlet:wght@100..900&family=Hi+Melody&family=Jua&family=Noto+Serif+KR:wght@200..900&family=Orbit&family=Poor+Story&display=swap');
 
 
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -52,6 +54,13 @@ table {
     border-spacing: 0;
 }
 
+.sun-editor-editable{
+    background-color: transparent !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+}
+
 /*custom css*/
 body{
     width: 100vw;
@@ -67,6 +76,10 @@ body{
     height: auto;
     margin: auto;
     padding-bottom: 80px;
+    display: none;
+}
+.wrap.show{
+    display: block;
 }
 h1{
     color: #8b008b;
@@ -100,6 +113,7 @@ h1{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 12px;
 }
 button{
     background: transparent;
@@ -172,7 +186,23 @@ p{
 .result-letter{
     width: 200px;
     height: 300px;
-    background-color: blanchedalmond;
+    position: relative;
+}
+.letter-text-area{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.letter-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
 }
 .btn-letter{
     cursor: pointer;
@@ -224,7 +254,8 @@ p{
     gap: 8px;
 }
 .letter-options li{
-    height: 38px;
+    min-height: 38px;
+    height: auto;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -237,6 +268,26 @@ p{
 .letter-options span.title{
     display: inline-flex;
     width: 100px;
+    white-space: nowrap;
+}
+.size-container{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-items: flex-end;
+    align-self: flex-start;
+}
+.size-container label{
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 1;
+}
+.size-container label span{
+    white-space: nowrap;
+}
+.size-container input[type="range"] {
+    width: 134px;
+    margin: 0 8px;
 }
 
 @media (min-width: 768px) {
