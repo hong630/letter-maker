@@ -82,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ['fontColor','hiliteColor','align'],
         ],
         iframe: false,
-        iframeCSSFileName: 'https://cdn.jsdelivr.net/npm/suneditor/dist/css/suneditor.min.css'
     });
 
     window.myEditor = editor;

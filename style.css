@@ -289,6 +289,10 @@ p{
     width: 134px;
     margin: 0 8px;
 }
+.sun-editor .se-btn-tray,
+.sun-editor .se-menu-tray{
+    z-index: 9999 !important;
+}
 
 @media (min-width: 768px) {
   .wrap{
