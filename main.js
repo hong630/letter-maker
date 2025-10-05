@@ -81,7 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ['bold','underline','italic'],
             ['fontColor','hiliteColor','align'],
         ],
-        iframe: false,
+        iframe: true,
+        iframeCSSFileName: 'https://cdn.jsdelivr.net/npm/suneditor/dist/css/suneditor.min.css'
     });
 
     window.myEditor = editor;
