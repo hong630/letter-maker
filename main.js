@@ -101,14 +101,12 @@ function refreshText() {
 function saveImg(){
     const target = document.getElementById('letterArea');
 
-    html2canvas(target, {
-        useCORS: true, // 외부 이미지 허용
-        scale: 3       // 고해상도 저장 (2배 크기)
-    }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'letter.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
+    html2canvas(target, { useCORS:true, scale:3 }).then(canvas => {
+        canvas.toBlob(blob => {
+            const url = URL.createObjectURL(blob);
+            // 새 탭으로 이미지 열기
+            window.open(url, '_blank'); // iOS에서 롱탭 → “사진 저장”
+        }, 'image/png');
     });
 }
 
