@@ -68,7 +68,7 @@ function goPrev(){
 
 //에디터 ============
 document.addEventListener('DOMContentLoaded', () => {
-    const editorHeight = '200px';
+    const editorHeight = '300px';
 
     const editor = window.SUNEDITOR.create('editor_container', {
         fontSize: ['8','10','12','14','16','18','20','24','28','32','36','72'],
@@ -146,9 +146,11 @@ document.getElementById('fontSelect').addEventListener('change', function () {
     const selectedFont = this.value;
 
     // sun-editor 내부 iframe 사용 시
-    const editable = document.querySelector('.sun-editor-editable');
+    const editable = document.querySelectorAll('.sun-editor-editable');
 
-    if (editable) {
-        editable.style.fontFamily = selectedFont;
+    if (editable.length > 0) {
+        editable.forEach((item)=>{
+            item.style.fontFamily = selectedFont;
+        })
     }
 });
