@@ -102,14 +102,37 @@ function saveImg(){
     const target = document.getElementById('letterArea');
 
     html2canvas(target, {
-        useCORS: true, // 외부 이미지 허용
-        scale: 3       // 고해상도 저장 (3배 크기)
-    }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'letter.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
+        useCORS: true,
+        allowTaint: false,
+        scale: Math.min(window.devicePixelRatio || 1, 2), // 과도한 스케일 방지
+        scrollY: -window.scrollY, // 화면 스크롤 보정
+    }).then(async (canvas) => {
+        // 1) Blob으로 받기
+        if (canvas.toBlob) {
+            canvas.toBlob((blob) => {
+                if (!blob) { openFallback(canvas); return; }
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'letter.png';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
+            }, 'image/png');
+        } else {
+            // 2) 폴백: 새 탭 열기(길게 눌러 저장)
+            openFallback(canvas);
+        }
     });
+}
+function openFallback(canvas) {
+    const dataUrl = canvas.toDataURL('image/png');
+    // iOS/일부 브라우저 대응
+    const win = window.open();
+    if (win) {
+        win.document.write(`<iframe src="${dataUrl}" frameborder="0" style="border:0;width:100%;height:100%"></iframe>`);
+    }
 }
 
 //결과물 속성 조정 ============
