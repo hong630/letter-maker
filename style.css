@@ -61,6 +61,11 @@ table {
     box-sizing: border-box !important;
 }
 
+.sun-editor .se-toolbar{
+    position: absolute !important;
+    bottom: 0 !important;
+}
+
 /*custom css*/
 body{
     width: 100vw;
@@ -188,12 +193,41 @@ p{
     height: 300px;
     position: relative;
 }
+#resultOverlay {
+    position: absolute;
+    inset: 0;           /* top:0; right:0; bottom:0; left:0 */
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 비율 유지 */
+    pointer-events: auto; /* 모바일에서 꾹 저장 가능 */
+    display: none;       /* 필요할 때만 보이기 */
+}
+
+/* 모바일이면 다운로드 버튼 숨기기, 힌트 보여주기 */
+@media (hover: none) and (pointer: coarse) {
+    .btn-step[onclick="saveImg()"] { display:none; }
+    .mobile-hint { display:block; }
+    .result-letter{
+        width: 500px;
+        height: 1000px;
+    }
+}
+@media (hover: hover) and (pointer: fine) {
+    .mobile-hint { display:none; }
+    .result-letter{
+        width: 200px;
+        height: 300px;
+    }
+}
+
 .letter-text-area{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 10;
 }
 .letter-background{
     position: absolute;
@@ -203,6 +237,7 @@ p{
     height: 100%;
     background-size: cover;
     background-position: center;
+    z-index: 1;
 }
 .btn-letter{
     cursor: pointer;
