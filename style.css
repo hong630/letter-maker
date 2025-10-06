@@ -197,7 +197,24 @@ p{
     object-fit: contain; /* 비율 유지 */
     pointer-events: auto; /* 모바일에서 꾹 저장 가능 */
     display: none;       /* 필요할 때만 보이기 */
+    -webkit-touch-callout: default; /* iOS: 이미지 길게눌러 '사진 저장' 띄우기 허용 */
+    user-select:auto;
+    -webkit-user-drag: none;
 }
+
+/* 아래 텍스트/배경은 선택/콜아웃 금지 (길게 눌러도 파란 선택 안 뜨게) */
+.letter-text-area,
+.letter-background{
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+
+
+/* 선택 하이라이트도 안 보이게 */
+.letter-text-area *::selection { background: transparent; }
 
 /* 모바일이면 다운로드 버튼 숨기기, 힌트 보여주기 */
 #resultOverlay { display:none; }

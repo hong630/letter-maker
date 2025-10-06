@@ -5,6 +5,10 @@ const overlayImg = document.getElementById('resultOverlay');
 const imgOpacity = document.getElementById('opacity');
 const imgOpacityValue = document.getElementById('val');
 
+
+overlayImg.setAttribute('draggable', 'false');
+
+
 input.addEventListener('change', () => {
     const file = input.files?.[0];
     if (!file) return;
@@ -295,3 +299,4 @@ function setLetterSize(w, h) {
     preview.style.width = '100%';
     preview.style.height = '100%';
 }
+
