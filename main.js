@@ -136,7 +136,7 @@ function endStyleChange() {
         const dataUrl = canvas.toDataURL('image/png');
 
         overlayImg.src = dataUrl;
-        overlayImg.style.display = prev || 'block'; // 오버레이 다시 덮기
+        overlayImg.style.display = isMobile ? 'block' : 'none';
         isRendering = false;
     }, 1000); // ← “이벤트 끝난 후 1초”
 }

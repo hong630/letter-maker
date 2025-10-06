@@ -61,11 +61,6 @@ table {
     box-sizing: border-box !important;
 }
 
-.sun-editor .se-toolbar{
-    position: absolute !important;
-    bottom: 0 !important;
-}
-
 /*custom css*/
 body{
     width: 100vw;
@@ -205,19 +200,24 @@ p{
 }
 
 /* 모바일이면 다운로드 버튼 숨기기, 힌트 보여주기 */
+#resultOverlay { display:none; }
+#resultOverlay.is-show { display:block; }
+
 @media (hover: none) and (pointer: coarse) {
     .btn-step[onclick="saveImg()"] { display:none; }
     .mobile-hint { display:block; }
+    #resultOverlay{ display: block; }
     .result-letter{
-        width: 500px;
-        height: 1000px;
+        width: 200px;
+        height: 300px;
     }
 }
 @media (hover: hover) and (pointer: fine) {
     .mobile-hint { display:none; }
+    #resultOverlay{ display: none}
     .result-letter{
-        width: 200px;
-        height: 300px;
+        width: 500px;
+        height: 1000px;
     }
 }
 
